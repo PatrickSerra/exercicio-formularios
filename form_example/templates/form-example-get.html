@@ -1,0 +1,97 @@
+<h4>Method: {{method}}</h4>
+<form method="get">
+    {% csrf_token %}
+    <p> 
+        <label for="id_text_input">Text input</label>
+        <input id="id_text_input" type="text" name="text_input" placeholder="Enter some text">
+    </p>
+
+    <p> 
+        <label for="id_password_input">Text input</label>
+        <input id="id_password_input" type="password" name="password_input" placeholder="Enter your password">
+    </p>
+
+    <p>
+        <input type="checkbox" name="checkbox_on" id="id_checkbox_input" value="Checkbox Checked" checked>
+        <label for="id_checkbox_input">Checkbox</label>
+    </p>
+
+    <p>
+        <input type="radio" name="radio_input" id="id_radio_one_input" value="Value One">
+        <label for="id_radio_one_input">Value one</label>
+
+        <input type="radio" name="radio_input" id="id_radio_two_input" value="Value Two">
+        <label for="id_radio_two_input">Value two</label>
+        
+        <input type="radio" name="radio_input" id="id_radio_three_input" value="Value One">
+        <label for="id_radio_three_input">Value Three</label>
+    
+    </p>
+
+    <p>
+        <label for="id_favorite_book">Favorite Book</label><br>
+        <select name="favorite_book" id="id_favorite_book">
+            <optgroup label="Non-Fiction">
+                <option value="1">Deep Learning With Keras</option>
+                <option value="2">Web development with Django</option>
+            </optgroup>
+
+            <optgroup label="Fiction">
+                <option value="3">Brave New World</option>
+                <option value="4">The Great Gatsby</option>
+            </optgroup>
+        </select>
+    </p>
+
+    <p>
+        <label for="id_books_you_own">Books You Own</label><br>
+        <select name="books_you_own" id="id_books_you_own" multiple>
+             <optgroup label="Non-Fiction">
+                <option value="1">Deep Learning With Keras</option>
+                <option value="2">Web development with Django</option>
+            </optgroup>
+
+            <optgroup label="Fiction">
+                <option value="3">Brave New World</option>
+                <option value="4">The Great Gatsby</option>
+            </optgroup>
+        </select>
+    </p>
+
+    <p>
+        <label for="id_text_area">Text Area</label>
+        <textarea name="text_area" id="id_text_area" cols="30" rows="10"
+        placeholder="Enter multiple lines of text">
+        </textarea>
+    </p>
+
+    <p>
+        <label for="id_number_input">Number imput</label>
+        <input id="id_number_input" type="number" 
+        name="number_input" value="" step="any" placeholder="A number">
+    </p>
+
+    <p>
+        <label for="id_email_input">Email imput</label>
+        <input id="id_number_input" type="email" 
+        name="email_input" value="" placeholder="Your email address">
+    </p>
+
+    <p>
+        <label for="id_date_input">Date imput</label>
+        <input id="id_date_input" type="date" 
+        name="email_input" value="2019-11-23">
+    </p>
+
+    <p>
+        <input type="submit" name="submit_input" value="Submit input">
+    </p>
+    <p>
+        <button type="submit" name="button_element" value="Button Element">
+            Button <strong>Styled</strong> text
+        </button>
+    </p>
+
+    <input type="hidden" name="hidden_input" value="Hidden Value">
+
+</form>

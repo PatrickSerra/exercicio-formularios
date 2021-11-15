@@ -31,9 +31,9 @@ RADIO_CHOICES = (
     
 
 class ExampleForm(forms.Form):
-    text_input = forms.CharField() # input de texto
-    password_input = forms.CharField(widget=forms.PasswordInput) # input de senha
-    checkbox_on = forms.BooleanField() #checkbox
+    text_input = forms.CharField(max_length=3) # input de texto
+    password_input = forms.CharField(widget=forms.PasswordInput, min_length=8) # input de senha
+    checkbox_on = forms.BooleanField(required=False) #checkbox
     
     # Campos Select
  
@@ -41,21 +41,18 @@ class ExampleForm(forms.Form):
     #Select com grupo de opções
     favorite_book_with_choices = forms.ChoiceField(choices=BOOK_CHOICHES_OPT) 
      #Select com grupo de opções e múltipla escolha
-    books_you_own = forms.MultipleChoiceField(choices=BOOK_CHOICHES_OPT)
+    books_you_own = forms.MultipleChoiceField(choices=BOOK_CHOICHES_OPT, required=False)
     
     #Botões de Radio
-    
-  
     radio_input = forms.ChoiceField(choices=RADIO_CHOICES, widget=forms.RadioSelect)
     
     #Inputs de números
-    
-    integer_input = forms.IntegerField()
+    integer_input = forms.IntegerField(min_value=1, max_value=10)
     float_input = forms.FloatField()
-    decimal_input = forms.DecimalField()
+    decimal_input = forms.DecimalField(max_digits=5, decimal_places=3)
     
     #Input de email
-    email_input = forms.EmailField()
+    email_input = forms.EmailField(required=False)
     
     #Input de data
     date_input = forms.DateInput(attrs={'type': 'date'})

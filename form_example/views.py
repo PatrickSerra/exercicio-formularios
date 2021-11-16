@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from .forms.exampleform import ExampleForm
-
+from .forms.exampleform2 import NameForm
+from .forms.contactForm import ContactForm
 # Create your views here.
 
 def index(request):
@@ -25,3 +27,26 @@ def form_example_post(request):
         print("{}: {}".format(name, request.POST.getlist(name)))
     
     return render(request, "form-example-post.html", {"method": request.method})
+
+def get_name(request):
+    if request.method == "POST":
+        form = NameForm(request.POST)
+        
+        if form.is_valid():
+            return HttpResponseRedirect('/thanks/')
+    else:
+        form = NameForm()
+        
+    return render(request, 'name-form.html', {'form': form})
+
+def contact_form(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        
+        if form.is_valid():
+            return HttpResponseRedirect('/thanks/')
+    else:
+        form = ContactForm()
+        
+    return render(request, 'name-form.html', {'form': form})
+    

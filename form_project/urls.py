@@ -22,5 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
     path('form-example-get', views.form_example_get),
-    path('form-example-post', views.form_example_post)
+    path('form-example-post', views.form_example_post),
+    path('name-form', views.get_name),
+    path('contact-form', views.contact_form)
 ]

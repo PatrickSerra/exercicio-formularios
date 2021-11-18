@@ -17,6 +17,12 @@ def index(request):
          
     return render(request, 'index.html', {"method": request.method, "form": form})
 
+
+def simple_form(request):
+    print(request.POST)
+    return render(request, 'simple-form.html')
+
+
 def form_example_get(request): 
     for name in request.POST:
         print("{}: {}".format(name, request.POST.getlist(name)))
@@ -34,7 +40,7 @@ def get_name(request):
         form = NameForm(request.POST)
         
         if form.is_valid():
-            return HttpResponseRedirect('/thanks/')
+            return HttpResponseRedirect('/name-form/')
     else:
         form = NameForm()
         

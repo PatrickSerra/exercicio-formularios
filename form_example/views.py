@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms.exampleform import ExampleForm
-from .forms.exampleform2 import NameForm
+from .forms.RegisterForm import RegisterForm
 from .forms.contactForm import ContactForm
 from .forms.OrderForm import OrderForm
 # Create your views here.
@@ -35,16 +35,20 @@ def form_example_post(request):
     
     return render(request, "form-example-post.html", {"method": request.method})
 
-def get_name(request):
-    if request.method == "POST":
-        form = NameForm(request.POST)
+def register(request):
+    if request.method == "POST":        
+        registerForm = RegisterForm(request.POST)
+        print(registerForm.is_bound)
+        if registerForm.is_valid():
+            print(registerForm.cleaned_data)
         
-        if form.is_valid():
-            return HttpResponseRedirect('/name-form/')
+        else:
+            print(registerForm.errors.as_data())
+    
     else:
-        form = NameForm()
+        registerForm = RegisterForm(initial={"nome_usuario": "Patrick", "sobrenome_usuario": "Serra"})    
         
-    return render(request, 'name-form.html', {'form': form})
+    return render(request, 'register-form.html', {'form': registerForm})
 
 def contact_form(request):
     if request.method == "POST":

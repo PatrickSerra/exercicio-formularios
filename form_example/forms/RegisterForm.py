@@ -46,8 +46,8 @@ class RegisterForm(forms.Form):
                 HTML(
                     """
                         <div> 
-                            <input id="input-btn" type='submit' class='btn btn-outline-secondary'>
-                            <input id="cancel-btn" type='submit' class='btn btn-outline-danger'>
+                            <input id="input-btn" type='submit' class='btn btn-outline-secondary' value="enviar">
+                            <input id="cancel-btn" type='button' class='btn btn-outline-danger' value="cancelar">
                         </div>
                     """
                 ),
@@ -83,7 +83,7 @@ class RegisterForm(forms.Form):
     sexo = forms.ChoiceField(
         widget = forms.RadioSelect,
         choices= [("M", "Masculino"), ("F", "Feminino")],
-        required= False
+        
 
     )
     
@@ -93,13 +93,13 @@ class RegisterForm(forms.Form):
             "required":"Por favor, digite sua data de nascimento",
             "invalid": "Por favor, digite uma data válida" #mensagem que é mostrada caso a data seja inválida
         },
-        required= False
+        
     )
     
     
     email_usuario = forms.EmailField(
         initial="user@example.com", 
-        required=False
+       
     )
     
     senha_usuario = forms.CharField(
@@ -110,7 +110,7 @@ class RegisterForm(forms.Form):
             "min_length": "A senha deve conter no minimo oito caracteres",
             "required": "Por favor, digite uma senha"
         },
-        required=False
+       
     )
     
     confirmar_senha = forms.CharField(
@@ -121,7 +121,7 @@ class RegisterForm(forms.Form):
             "min_length": "A senha deve conter no minimo oito caracteres",
             "required": "Por favor, digite uma senha"
         },
-        required=False
+       
     )
     
     receber_newsletter = forms.BooleanField(required=False)

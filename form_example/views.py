@@ -4,6 +4,9 @@ from .forms.exampleform import ExampleForm
 from .forms.RegisterForm import RegisterForm
 from .forms.contactForm import ContactForm
 from .forms.OrderForm import OrderForm
+from .forms.RegisterModelForm import RegisterModelForm
+
+
 # Create your views here.
 
 def index(request):
@@ -49,6 +52,23 @@ def register(request):
         registerForm = RegisterForm(initial={"nome_usuario": "Patrick", "sobrenome_usuario": "Serra"})    
         
     return render(request, 'register-form.html', {'form': registerForm})
+
+def model_register(request):
+    if request.method == "POST":
+        registerForm = RegisterModelForm(request.POST)
+        
+        if registerForm.is_valid():
+            print(registerForm.cleaned_data)
+            registerForm.save()
+
+        else:
+            print(registerForm.errors.as_json())
+
+    else:
+        registerForm = RegisterModelForm()
+    
+    return render(request, 'register-model-form.html', {'form': registerForm})
+    
 
 def contact_form(request):
     if request.method == "POST":
